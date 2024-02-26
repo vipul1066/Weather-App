@@ -21,21 +21,26 @@ export default function InfoBox({info}) {
   return (
     <div className="InfoBox">
       <div className="cardContainer">
-        <Card sx={{ maxWidth: 345 }}>
+        <Card className="weatherCard">
           <CardMedia
-            sx={{ height: 140 }}
-            component="img" // Set component to "img"
+            className="weatherImage"
+            component="img"
             image={
               info.humidity > 80
                 ? RAIN_URL
                 : info.temp > 15
                 ? HOT_URL
                 : COLD_URL
-            } // Use src attribute for the image URL
-            alt="Weather Image" // Provide alt text for accessibility
+            }
+            alt="Weather Image"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              className="weatherTitle"
+            >
               {info.city}
               {info.humidity > 80 ? (
                 <ThunderstormIcon />
@@ -45,18 +50,18 @@ export default function InfoBox({info}) {
                 <AcUnitIcon />
               )}
             </Typography>
-
             <Typography
               variant="body2"
               color="text.secondary"
               component={"span"}
+              className="weatherDetails"
             >
               <p>Temperature = {info.temp}&deg;C </p>
               <p>Humidity = {info.humidity}</p>
               <p>Min Temp = {info.tempMin}&deg;C </p>
               <p>Max Temp = {info.tempMax}&deg;C </p>
               <p>
-                The Weather can be describe as <i>{info.weather}</i> and feels
+                The Weather can be described as <i>{info.weather}</i> and feels
                 like = {info.feelslike}&deg;C{" "}
               </p>
             </Typography>
